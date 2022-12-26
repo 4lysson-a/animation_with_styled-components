@@ -1,4 +1,5 @@
 import styled, { Keyframes } from "styled-components";
+import { iAnimation } from "./types";
 
 function addDelay(max: number) {
   let css = '';
@@ -15,16 +16,19 @@ function addDelay(max: number) {
   return css;
 }
 
-export const AnimationWrapper = styled.div<{
-  max: number;
-  keyframe: Keyframes;
-}>`
+function customCss(callback: Function){
+  callback();
+}
+
+export const AnimationWrapper = styled.div<iAnimation>`
   div {
     animation-name: ${({ keyframe }) => keyframe};
-    animation-duration: 0.3s;
-    animation-timing-function: ease;
-    animation-fill-mode: forwards;
+    animation-duration: ${({ time }) => `${time}s`};
+    animation-timing-function: ${({ timingFunction }) => timingFunction};
+    animation-fill-mode: ${({ fillMode }) => fillMode};
     
     ${({ max }) => addDelay(max)}
+  
+    ${({ customCss }) => customCss && customCss()}
   }
 `;

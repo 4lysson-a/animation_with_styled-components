@@ -9,9 +9,9 @@ const App = () => {
 
   return (
     <Container>
-      <AnimationDelay keyframe={fadeInAnimation} max={loop.length}>
+      <AnimationDelay keyframe={fadeInAnimation}>
         {loop.map((_, index) => (
-          <Box />
+          <Box key={index} />
         ))}
       </AnimationDelay>
     </Container>
