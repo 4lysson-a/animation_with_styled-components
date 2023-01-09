@@ -28,7 +28,6 @@ export const AnimationWrapper = styled.div<iAnimation>`
     animation-fill-mode: ${({ fillMode }) => fillMode};
     
     ${({ max }) => addDelay(max)}
-  
     ${({ customCss }) => customCss && customCss()}
   }
 `;
